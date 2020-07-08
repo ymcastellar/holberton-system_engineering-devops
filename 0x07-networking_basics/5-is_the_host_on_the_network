@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#script that pings an IP address passed as an argument
+# script that pings an IP address passed as an argument
 var="$1"
 if [ ! -n "$var" ]
 then
