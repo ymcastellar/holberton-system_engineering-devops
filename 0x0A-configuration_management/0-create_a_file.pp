@@ -1,7 +1,7 @@
 # create a file in /tmp
 
 file { '/tmp/holberton':
-ensure  => 'present',
+ensure  => present,
 path    => '/tmp/holberton',
 node    => '0744',
 owner   => 'www-data',
