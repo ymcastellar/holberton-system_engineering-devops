@@ -3,4 +3,4 @@
 apt -y update 
 apt install -y nginx
 echo "Holberton School" > /var/www/html/index.html
-service ngix restar
+service ngix restart
