@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
-# Script to create a custom 404 page
+#bash script that install nginx and configures the web server
+sudo apt-get update
 sudo apt-get -y install nginx
+echo "Holberton School" | sudo tee /var/www/html/index.html
 sudo service nginx start
-echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/error_404.html
-sudo sed -i '38i\error_page 404 /error_404.html;' /etc/nginx/sites-available/default
+command="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
+sudo sed -i "s/server_name _;/$command/" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html
+error="server_name _;\n\terror_page 404 \/custom_404.html;\nlocation = \/custom_404.html {\n\troot \/var\/www\/html;\n\tinternal;\n\t}"
+sudo sed -i "s/server_name _;/$error/" /etc/nginx/sites-available/default
 sudo service nginx restart
