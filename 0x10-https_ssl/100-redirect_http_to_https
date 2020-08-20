@@ -38,6 +38,7 @@ defaults
 
 frontend ang3lp
         bind *:80
+        redirect scheme https 301 if !{ ssl_fc }
         reqadd X-Forwarded-Proto:\ http
         default_backend app
 
