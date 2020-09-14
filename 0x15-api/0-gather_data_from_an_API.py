@@ -4,7 +4,6 @@
 
 import requests
 import sys
-import json
 
 if __name__ == "__main__":
     # get url by id:
@@ -31,4 +30,6 @@ if __name__ == "__main__":
     print("Employee {} is done with tasks({}/{}):"
           .format(List_user['name'], task_done, task_cont))
 
-    print(*titles_done, sep='\n')
+    for list_titles in titles_done:
+        print('\t {}'.format(list_titles))
+
