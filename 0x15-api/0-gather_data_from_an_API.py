@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """Gather data from an API"""
-
-
 import requests
 import sys
 
@@ -32,4 +30,3 @@ if __name__ == "__main__":
 
     for list_titles in titles_done:
         print('\t {}'.format(list_titles))
-
