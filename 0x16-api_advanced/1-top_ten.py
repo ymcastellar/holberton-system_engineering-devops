@@ -16,3 +16,5 @@ def top_ten(subreddit):
     if top:
         for c_title in top:
             print(c_title.get("data").get("title"))
+    else:
+        print(None)
