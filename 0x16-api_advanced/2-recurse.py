@@ -10,7 +10,7 @@ def recurse(subreddit, hot_list=[], key=None):
 
     if key:
         req = requests.get('https://reddit.com/r/' + subreddit +
-                           '/hot.json?after=' + page,
+                           '/hot.json?after=' + key,
                            headers=headers)
     else:
         req = requests.get('https://reddit.com/r/' + subreddit +
@@ -23,7 +23,8 @@ def recurse(subreddit, hot_list=[], key=None):
 
     if top:
         for c_title in top:
-            hot_list.append(c_title.get("data").get("title"))
+            children_data = c_title['data']
+            hot_list.append(children_data['title'])
 
     if key:
         recurse(subreddit, hot_list, key)
