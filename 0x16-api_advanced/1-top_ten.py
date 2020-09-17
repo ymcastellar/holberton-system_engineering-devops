@@ -9,7 +9,7 @@ def top_ten(subreddit):
     header = {"User-Agent": "ymcastellar"}
     req = requests.get('https://reddit.com/r/' + subreddit
                        + '/hot.json?sort=hot&limit=10',
-                       headers=header, allow_redirects=True)
+                       headers=header)
 
     if req.status_code != 200:
         print(None)
