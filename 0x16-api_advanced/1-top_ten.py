@@ -15,7 +15,7 @@ def top_ten(subreddit):
         print(None)
         return
 
-    top = req.json().get('data', {}).get('children', 0)
+    top = req.json().get('data', {}).get('children', None)
     for i in top:
         c_data = i.get('data')
         c_title = c_data.get('title')
