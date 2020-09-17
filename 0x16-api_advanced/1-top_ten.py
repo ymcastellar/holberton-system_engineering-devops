@@ -11,12 +11,7 @@ def top_ten(subreddit):
                        + '/hot.json?sort=hot&limit=10',
                        headers=header)
 
-    if req.status_code != 200:
-        print(None)
-        return
-
     top = req.json().get('data', {}).get('children', None)
-    for i in top:
-        c_data = i.get('data')
-        c_title = c_data.get('title')
-        print(c_title)
+    if top:
+        for c_title in top:
+            print(c_title.get("data").c_title("title"))
