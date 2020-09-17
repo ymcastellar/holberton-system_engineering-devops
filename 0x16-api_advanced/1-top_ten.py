@@ -5,9 +5,12 @@ import requests
 
 def top_ten(subreddit):
     """request num of subs"""
-    header = {"User-Agent": "ymcastellar"}
-    req = requests.get('https://reddit.com/r/' + subreddit
-                       + '/hot.json?limit=10', headers=header)
+    URL = 'http://reddit.com/r/{}/hot.json'
+    headers = {"User-Agent": "ymcastellar"}
+    size_q = {'limit': 10}
+
+    responsable = requests.get(URL.format(
+        subreddit), params=size_q, headers=headers)
 
     top = req.json().get('data', {}).get('children', None)
 
