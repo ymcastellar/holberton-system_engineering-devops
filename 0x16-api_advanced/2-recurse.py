@@ -6,8 +6,7 @@ import requests
 def recurse(subreddit, hot_list=[], key=None):
     """return all hot articles"""
 
-    headers = {"User-Agent": "ymcastellar"}
-
+    headers = {'User-agent': 'ymcastellar'}
     if key:
         req = requests.get('https://reddit.com/r/' + subreddit +
                            '/hot.json?after=' + key,
@@ -16,17 +15,18 @@ def recurse(subreddit, hot_list=[], key=None):
         req = requests.get('https://reddit.com/r/' + subreddit +
                            '/hot.json', headers=headers)
 
+    if req.status_code == 404:
+        return None
+
     sub_json = req.json()
     sub_data = sub_json['data']
-    page = sub_data['after']
-    top = sub_data['children']
+    key = sub_data['after']
+    sub_children = sub_data['children']
 
-    if top:
-        for c_title in top:
-            children_data = c_title['data']
-            hot_list.append(children_data['title'])
+    for children in sub_children:
+        children_data = children['data']
+        hot_list.append(children_data['title'])
 
     if key:
         recurse(subreddit, hot_list, key)
-
     return hot_list
