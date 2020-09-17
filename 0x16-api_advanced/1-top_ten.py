@@ -7,7 +7,7 @@ def top_ten(subreddit):
     """request num of subs"""
     header = {"User-Agent": "ymcastellar"}
     req = requests.get('https://reddit.com/r/' + subreddit
-                       + '/hot.json?sort=hot&limit=10',
+                       + '/hot.json?limit=10',
                        headers=header)
 
     top = req.json().get('data', {}).get('children', None)
