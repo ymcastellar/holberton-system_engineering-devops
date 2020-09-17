@@ -9,7 +9,7 @@ def top_ten(subreddit):
     headers = {"User-Agent": "ymcastellar"}
     size_q = {'limit': 10}
 
-    responsable = requests.get(URL.format(
+    req = requests.get(URL.format(
         subreddit), params=size_q, headers=headers)
 
     top = req.json().get('data', {}).get('children', None)
