@@ -6,15 +6,15 @@ import requests
 def recurse(subreddit, hot_list=[], key=None):
     """return all hot articles"""
 
-    URL = 'http://reddit.com/r/{}/hot.json'
     headers = {"User-Agent": "ymcastellar"}
 
     if key:
-        req = requests.get(URL.format(
-            subreddit), params=key, headers=headers)
+        req = requests.get('https://reddit.com/r/' + subreddit +
+                           '/hot.json?after=' + page,
+                           headers=headers)
     else:
-        req = requests.get(URL.format(
-            subreddit), headers=headers)
+        req = requests.get('https://reddit.com/r/' + subreddit +
+                           '/hot.json', headers=headers)
 
     sub_json = req.json()
     sub_data = sub_json['data']
