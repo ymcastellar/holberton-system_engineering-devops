@@ -12,6 +12,7 @@ def top_ten(subreddit):
                        headers=header)
 
     top = req.json().get('data', {}).get('children', None)
+
     if top:
         for c_title in top:
-            print(c_title.get("data").c_title("title"))
+            print(c_title.get("data").get("title"))
